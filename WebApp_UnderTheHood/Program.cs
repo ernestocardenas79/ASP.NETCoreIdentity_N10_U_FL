@@ -11,6 +11,7 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("admin"));
     options.AddPolicy("MustBelongToHRDepartment", policy => policy.RequireClaim("Deparment", "HR"));
 });
 
