@@ -7,7 +7,11 @@ builder.Services.AddAuthentication()
     .AddCookie("MyCookieAuth", options =>
 {
     options.Cookie.Name = "MyCookieAuth";
-    options.LoginPath = "/Account/Login";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBelongToHRDepartment", policy => policy.RequireClaim("Deparment", "HR"));
 });
 
 var app = builder.Build();
