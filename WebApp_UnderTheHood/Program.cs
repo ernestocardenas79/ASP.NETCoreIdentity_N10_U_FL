@@ -10,6 +10,7 @@ builder.Services.AddAuthentication()
     .AddCookie("MyCookieAuth", options =>
 {
     options.Cookie.Name = "MyCookieAuth";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 });
 
 builder.Services.AddAuthorization(options =>
