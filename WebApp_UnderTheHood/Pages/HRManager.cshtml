@@ -2,8 +2,31 @@
 @model WebApp_UnderTheHood.Pages.HRManagerModel
 @{
 }
-<div>
-    <h1>HR Manager</h1>
-    <br />
-    <p>Welcome to HR Manager.</p>
+<div class="text-center">
+    <h1>Welcome to Human Resources Managment</h1>
 </div>
+<br />
+@if (Model.weatherForecastItems != null)
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (C)</th>
+                <th>Temperature (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.weatherForecastItems)
+            {
+                <tr>
+                    <td>@item.Date.ToShortDateString()</td>
+                    <td>@item.TemperatureC °C</td>
+                    <td> @item.TemperatureF °F</td>
+                    <td>@item.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
