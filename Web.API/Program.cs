@@ -26,6 +26,10 @@ builder.Services.AddAuthentication(option =>
         ClockSkew = TimeSpan.Zero
     };
 });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("admin"));
+});
 
 var app = builder.Build();
 
